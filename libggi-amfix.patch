@@ -1,0 +1,13 @@
+--- libggi-2.0.2/display/tele/Makefile.am.orig	Sat Jul  7 21:57:04 2001
++++ libggi-2.0.2/display/tele/Makefile.am	Thu Jan 16 23:00:19 2003
+@@ -4,8 +4,8 @@
+ 	-export-symbols $(srcdir)/EXPSYMS
+ 
+ bin_PROGRAMS = ggiteleserver
+-ggiteleserver_SOURCES = teleserver.c libtele.c
+-ggiteleserver_LDADD = $(top_builddir)/ggi/libggi.la $(bsdsock_libs)
++ggiteleserver_SOURCES = teleserver.c
++ggiteleserver_LDADD = $(top_builddir)/ggi/libggi.la $(bsdsock_libs) libtele.lo
+ 
+ sublib_LTLIBRARIES = tele.la
+ 

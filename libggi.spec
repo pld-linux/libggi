@@ -1,25 +1,25 @@
-# _with_glide - Build Glide support
-# _with_kgicon - Build KGICon support
+#
+# Conditional build:
+# _with_glide	- with Glide support
+# _with_kgicon	- with KGICon support
+#
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
-Version:	2.0.1
-Release:	6
+Version:	2.0.2
+Release:	1
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
-Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.gz
-Patch0:		%{name}-time.patch
-Patch1:		%{name}-svga.patch
-Patch2:		%{name}-tm_to_mode.patch
-Patch3:		%{name}-ac25x.patch
-Patch4:		%{name}-nodirectfb.patch
+Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.src.tar.bz2
+Patch0:		%{name}-amfix.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	aalib-devel
 BuildRequires:	libgii-devel
+BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 %ifarch %{ix86} alpha
 BuildRequires:	svgalib-devel
@@ -129,19 +129,23 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch -p1
 
 %build
-CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
-./autogen.sh
+%{__libtoolize}
+rm -f m4/libtool.m4
+head -114 acinclude.m4 | tail +71 > m4/gii.m4
+cat m4/*.m4 > acinclude.m4
+%{__aclocal}
+%{__autoheader}
+%{__autoconf}
+%{__automake}
+CPPFLAGS="-I/usr/include/glide -I/usr/include/directfb -I/usr/include/directfb-internal"
 %configure \
 	%{?!debug:--disable-debug} \
 	%{?!_with_glide:--disable-glide} \
 	%{?!_with_kgicon:--disable-genkgi} \
+	--disable-directfb \
 %ifnarch %{ix86} alpha
 	--disable-svga \
 	--disable-vgagl \
@@ -216,6 +220,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/X*.so
 %attr(755,root,root) %{_libdir}/ggi/display/xf86dga.so
+%dir %{_libdir}/ggi/helper
+%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_*.so
 
 %{?!_with_glide:#}%files glide
 %{?!_with_glide:#}%attr(755,root,root) %{_libdir}/ggi/display/glide.so
@@ -223,20 +229,15 @@ rm -rf $RPM_BUILD_ROOT
 %files programs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_mandir}/man6/*
+%{_mandir}/man1/*
 
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog
-%doc %{_examplesdir}/%{name}-%{version}
-
 %{_includedir}/ggi/*.h
-%{_includedir}/ggi/default
 %{_includedir}/ggi/display
 %{_includedir}/ggi/internal/*.h
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_libdir}/ggi/*/*.la
-%{_libdir}/ggi/default/fbdev/*/*.la
-
 %{_mandir}/man3/*
+%{_examplesdir}/%{name}-%{version}
