@@ -218,7 +218,7 @@ gzip -9nf README ChangeLog NEWS doc/*.txt
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 
-%ifnarch %{ix86} alpha
+%ifarch %{ix86} alpha
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svga*.so
