@@ -1,6 +1,6 @@
 # _with_glide - Build Glide support
 # _with_kgicon - Build KGICon support
-Summary:	GGI - Generic Graphics Interface	
+Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0.1
@@ -53,7 +53,7 @@ Requires:	%{name} = %{version}
 %description aa
 LibGGI target for displaying graphics using ascii-art-library.
 
-%description -l pl aa
+%description aa -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 
 %ifarch %{ix86}
@@ -66,7 +66,7 @@ Requires:	%{name} = %{version}
 %description svgalib
 LibGGI target for displaying via SVGALib.
 
-%description -l pl svgalib
+%description svgalib -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
 %endif
 
@@ -82,7 +82,7 @@ LibGGI targets for displaing in X:
  - xlib - graphics via X-library
  - dga - graphics via XFree86 DGA extension
 
-%description -l pl X11
+%description X11 -l pl
 Modu³y LibGGI do obs³ugi grafiki w XWindow:
  - x - grafika poprzez protokó³ X
  - xlib - grafika poprzez bibliotekê xlib
@@ -97,7 +97,7 @@ Requires:	%{name} = %{version}
 %description glide
 GGI Glide target.
 
-%description -l pl glide
+%description glide -l pl
 Modu³ do obs³ugi grafiki poprzez Glide.
 
 %package programs
@@ -110,7 +110,7 @@ Obsoletes:	libggi-demos
 %description programs
 Various utilities and demos for GGI.
 
-%description -l pl programs
+%description programs -l pl
 Ró¿ne programy oraz dema dla GGI
 
 %package devel
@@ -131,7 +131,7 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 %patch1 -p1
 
 %build
-CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS 
+CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
 ./autogen.sh
 %configure \
 	%{?!debug:--disable-debug} \
@@ -171,7 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz NEWS.gz doc/*.txt* 
+%doc README.gz NEWS.gz doc/*.txt*
 %dir %{_libdir}/ggi
 %dir %{_libdir}/ggi/default
 %dir %{_libdir}/ggi/default/fbdev
@@ -203,7 +203,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 
-%ifarch %{ix86} 
+%ifarch %{ix86}
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svga*.so
