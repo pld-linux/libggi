@@ -1,5 +1,5 @@
-# bcond_on_glide - Build Glide support
-# bcond_on_kgicon - Build KGICon support
+# _with_glide - Build Glide support
+# _with_kgicon - Build KGICon support
 Summary:	GGI - Generic Graphics Interface	
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
@@ -20,8 +20,8 @@ BuildRequires:	aalib-devel
 %ifarch %{ix86} alpha
 BuildRequires:	svgalib-devel
 %endif
-%{?bcond_on_glide:BuildRequires: glide-devel}
-%{?bcond_on_kgicon:BuildRequires: kgicon-devel}
+%{?_with_glide:BuildRequires: glide-devel}
+%{?_with_kgicon:BuildRequires: kgicon-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -152,8 +152,8 @@ Pliki potrzebne do programowania z wykorzystaniem LibGII.
 CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS 
 %configure \
 	%{?!debug:--disable-debug} \
-	%{?!bcond_on_glide:--disable-glide} \
-	%{?!bcond_on_kgicon:--disable-genkgi} \
+	%{?!_with_glide:--disable-glide} \
+	%{?!_with_kgicon:--disable-genkgi} \
 %ifnarch %{ix86} alpha
 	--disable-svga \
 	--disable-vgagl \
@@ -230,8 +230,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ggi/display/X*.so
 %attr(755,root,root) %{_libdir}/ggi/display/xf86dga.so
 
-%{?!bcond_on_glide:#}%files glide
-%{?!bcond_on_glide:#}%attr(755,root,root) %{_libdir}/ggi/display/glide.so
+%{?!_with_glide:#}%files glide
+%{?!_with_glide:#}%attr(755,root,root) %{_libdir}/ggi/display/glide.so
 
 %files programs
 %defattr(644,root,root,755)
