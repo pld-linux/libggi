@@ -16,9 +16,7 @@ URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-%ifnarch ppc
 BuildRequires:	aalib-devel
-%endif
 BuildRequires:	libgii-devel
 BuildRequires:	ncurses-devel
 %ifarch %{ix86} alpha
@@ -47,7 +45,6 @@ wy¶wietlania. Oryginalnie biblioteka zosta³a stworzona do
 wspó³dzia³ania z KGI (GGI Kernel Graphic Interface) ale inne
 sterowniki wy¶wietlania mog± byæ ³atwo u¿ywane.
 
-%ifnarch ppc
 %package aa
 Summary:	aalib target for LibGGI
 Summary(pl):	Obs³uga aalib dla LibGGI
@@ -59,8 +56,6 @@ LibGGI target for displaying graphics using ascii-art-library.
 
 %description aa -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
-
-%endif
 
 %ifarch %{ix86} alpha
 %package svgalib
@@ -150,9 +145,6 @@ CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
 	--disable-svga \
 	--disable-vgagl \
 %endif
-%ifarch ppc
-	--disable-aa \
-%endif
 	--sysconfdir=%{_sysconfdir} \
 	--enable-threads
 %{__make}
@@ -210,11 +202,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man7/*
 
-%ifnarch ppc
 %files aa
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
-%endif
 
 %ifarch %{ix86} alpha
 %files svgalib
