@@ -120,6 +120,7 @@ CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS
 	--disable-genkgi \
 %ifnarch %{ix86} alpha
 	--disable-svga \
+	--disable-vgagl \
 %endif
 	--sysconfdir=%{_sysconfdir}
 %{__make}
