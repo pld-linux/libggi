@@ -5,9 +5,6 @@
 %bcond_without	aalib	# without aalib support
 %bcond_without	svga	# without svgalib support
 #
-%ifnarch %{ix86} alpha
-%undefine	with_svga
-%endif
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
