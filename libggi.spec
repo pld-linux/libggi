@@ -14,6 +14,7 @@ Epoch:		1
 License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.src.tar.bz2
+# Source0-md5:	89a723c041a123110cad167d37f1a192
 Patch0:		%{name}-amfix.patch
 Patch1:		%{name}-gcc33.patch
 URL:		http://www.ggi-project.org/
