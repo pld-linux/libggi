@@ -19,6 +19,8 @@ BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	aalib-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 %ifarch %{ix86}
 BuildRequires:	svgalib-devel
 %endif
