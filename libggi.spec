@@ -17,7 +17,7 @@ URL:		http://www.ggi-project.org/
 BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	aalib-devel
-%ifarch %{ix86} alpha
+%ifarch %{ix86}
 BuildRequires:	svgalib-devel
 %endif
 %{?_with_glide:BuildRequires: glide-devel}
@@ -59,6 +59,7 @@ LibGGI target for displaying graphics using ascii-art-library.
 %description -l pl aa
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 
+%ifarch %{ix86}
 %package svgalib
 Summary:	SVGALib target for LibGII
 Summary(pl):	Obs³uga SVGALib dla LibGII
@@ -74,6 +75,7 @@ LibGGI target for displaying via SVGALib.
 
 %description -l pl svgalib
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
+%endif
 
 %package X11
 Summary:	X11 targets for LibGII
@@ -154,7 +156,7 @@ CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
 	%{?!debug:--disable-debug} \
 	%{?!_with_glide:--disable-glide} \
 	%{?!_with_kgicon:--disable-genkgi} \
-%ifnarch %{ix86} alpha
+%ifnarch %{ix86}
 	--disable-svga \
 	--disable-vgagl \
 %endif
@@ -218,7 +220,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 
-%ifarch %{ix86} alpha
+%ifarch %{ix86} 
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svga*.so
