@@ -1,0 +1,11 @@
+diff -Nru libggi-2.0.1.orig/display/fbdev/fbdev.conf.in libggi-2.0.1/display/fbdev/fbdev.conf.in
+--- libggi-2.0.1.orig/display/fbdev/fbdev.conf.in	Sun Aug 26 17:56:45 2001
++++ libggi-2.0.1/display/fbdev/fbdev.conf.in	Mon Jul  1 09:50:03 2002
+@@ -10,5 +10,5 @@
+ tgt-fbdev-kgicon-generic	default/fbdev/kgi/genkgi.@DLLEXT@
+ 
+ #DirectFB Driver
+-tgt-fbdev-directfb		default/fbdev/directfb/directfb.@DLLEXT@
+-helper-fbdev-directfb-global	default/fbdev/directfb/directfbglobal.@DLLEXT@
++#tgt-fbdev-directfb		default/fbdev/directfb/directfb.@DLLEXT@
++#helper-fbdev-directfb-global	default/fbdev/directfb/directfbglobal.@DLLEXT@
