@@ -136,7 +136,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz NEWS.gz
+%doc README.gz NEWS.gz doc/*.txt* 
 %dir %{_libdir}/ggi
 %dir %{_libdir}/ggi/default
 %dir %{_libdir}/ggi/default/fbdev
@@ -183,7 +183,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/*.txt* ChangeLog.gz
+%doc ChangeLog.gz
 %doc /usr/src/examples/%{name}
 
 %{_includedir}/*
