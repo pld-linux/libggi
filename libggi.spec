@@ -4,7 +4,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0.1
-Release:	4
+Release:	5
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
@@ -164,8 +164,6 @@ install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/slimy $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/stars $RPM_BUILD_ROOT%{_bindir}
 
-gzip -9nf README ChangeLog NEWS doc/*.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -174,7 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz NEWS.gz doc/*.txt*
+%doc README NEWS doc/*.txt
 %dir %{_libdir}/ggi/default
 %dir %{_libdir}/ggi/default/fbdev
 %dir %{_libdir}/ggi/default/fbdev/*
@@ -227,10 +225,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc ChangeLog.gz
+%doc ChangeLog
 %doc %{_examplesdir}/%{name}-%{version}
 
-%{_includedir}/*
+%{_includedir}/ggi/*.h
+%{_includedir}/ggi/default
+%{_includedir}/ggi/display
+%{_includedir}/ggi/internal/*.h
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/ggi/*/*.la
