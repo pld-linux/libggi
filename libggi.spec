@@ -13,6 +13,7 @@ BuildPrereq:	XFree86-devel
 BuildPrereq:	aalib-devel
 BuildPrereq:	svgalib-devel
 #BuildPrereq:   glide-devel
+BuildPrereq:    kgicon-devel
 BuildRoot:   	/tmp/%{name}-%{version}-root
 
 %description
