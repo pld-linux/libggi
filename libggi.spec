@@ -179,6 +179,8 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 	DESTDIR="$RPM_BUILD_ROOT"
 
 install programs/demos/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install programs/demos/Makefile $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+install config.h $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # demos which are nice, but not installed by make install
 install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
