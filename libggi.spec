@@ -28,8 +28,8 @@ BuildRequires:	ncurses-devel
 %ifarch %{ix86} alpha
 %{!?_without_svgalib:BuildRequires:	svgalib-devel}
 %endif
-%{?_with_glide:BuildRequires: glide-devel}
-%{?_with_kgicon:BuildRequires: kgicon-devel}
+%{?_with_glide:BuildRequires:	glide-devel}
+%{?_with_kgicon:BuildRequires:	kgicon-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
