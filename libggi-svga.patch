@@ -1,17 +1,18 @@
---- libggi/display/svgalib/mode.c.orig	Sun Jul  1 01:07:34 2001
-+++ libggi/display/svgalib/mode.c	Tue Jul 24 12:54:13 2001
-@@ -217,7 +217,7 @@
- 	/* DirectBuffers */
- 	_GGI_svga_freedbs(vis);
+diff -Nru libggi.orig/display/svgalib/mode.c libggi/display/svgalib/mode.c
+--- libggi.orig/display/svgalib/mode.c	Sat Aug 11 09:01:50 2001
++++ libggi/display/svgalib/mode.c	Mon Aug 13 15:14:58 2001
+@@ -225,7 +225,7 @@
  	priv->frame_size = tm->virt.x * tm->virt.y * modeinfo->bytesperpixel;
+ 	GGIDPRINT("Setting up DirectBuffers, islinear=%d, frame_size=%d, frames=%d\n",
+ 		  priv->islinear, priv->frame_size, LIBGGI_MODE(vis)->frames);
 -	for (i=0; priv->islinear && (i < LIBGGI_MODE(vis)->frames); i++) {
 +	for (i=0; priv->islinear && (i < tm->frames); i++) {
  		ggi_directbuffer *buf;
  
  		_ggi_db_add_buffer(LIBGGI_APPLIST(vis), _ggi_db_get_new());
-@@ -355,7 +355,7 @@
+@@ -366,7 +366,7 @@
  	/* Only support frames when we can support linear access 
- 	 * and we have enough video memory */
+ 	 * and we have enough video memory. */
  	if (!(vmi->flags & CAPABLE_LINEAR)
 -			&& (vmi->memory < (vmi->bytesperpixel * tm->virt.x * 
 +			|| (vmi->memory < (vmi->bytesperpixel * tm->virt.x * 
