@@ -18,13 +18,14 @@ BuildRequires:	svgalib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-LibGGI, the dynamic GGI (General Graphics Interface) library is a flexible
-drawing library.
+LibGGI, the dynamic GGI (General Graphics Interface) library is a
+flexible drawing library.
 
-It provides an opaque interface to the display's acceleration functions. It
-was originally intended to allow user programs to interface with KGI, the
-GGI Kernel Graphics Interface, but other display types can be easily used
-by loading the appropriate "display target" (e.g. X, memory).
+It provides an opaque interface to the display's acceleration
+functions. It was originally intended to allow user programs to
+interface with KGI, the GGI Kernel Graphics Interface, but other
+display types can be easily used by loading the appropriate "display
+target" (e.g. X, memory).
 
 %package aa
 Summary:	aalib target for LibGII
@@ -68,7 +69,7 @@ LibGGI targets for displaing in X:
 #Group:		Libraries
 #Group(pl):	Biblioteki
 #Requires:	%{name} = %{version}
-#
+
 #%description glide
 #GGI Glide target.
 
@@ -112,12 +113,12 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
+install -d $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
 
 make install \
 	DESTDIR="$RPM_BUILD_ROOT"
 
-install programs/demos/*.c $RPM_BUILD_ROOT/usr/src/examples/%{name}
+install programs/demos/*.c $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
 
 # demos which are nice, but not installed by make install
 install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
@@ -168,12 +169,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man7/*
 
 %files aa
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 
 %files svgalib
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svgalib.so
 
 %files X11
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/X*.so
 %attr(755,root,root) %{_libdir}/ggi/display/xf86dga.so
 
@@ -188,7 +192,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog.gz
-%doc /usr/src/examples/%{name}
+%doc %{_prefix}/src/examples/%{name}
 
 %{_includedir}/*
 %attr(755,root,root) %{_libdir}/lib*.so
