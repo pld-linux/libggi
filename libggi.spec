@@ -4,16 +4,17 @@ Name:		libggi
 Version:	2.0b2.1
 Release:	2
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
-Copyright:	GPL
+License:	GPL
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.bz2
 URL:		http://www.ggi-project.org/
 BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	aalib-devel
 BuildRequires:	svgalib-devel
-#BuildRequires: glide-devel
-#BuildRequires:  kgicon-devel
+#BuildRequires:	glide-devel
+#BuildRequires:	kgicon-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -22,43 +23,44 @@ drawing library.
 
 It provides an opaque interface to the display's acceleration functions. It
 was originally intended to allow user programs to interface with KGI, the
-GGI Kernel Graphics Interface, but other display types can be easily used by
-loading the appropriate "display target" (e.g. X, memory).
-
-%description -l pl
+GGI Kernel Graphics Interface, but other display types can be easily used
+by loading the appropriate "display target" (e.g. X, memory).
 
 %package aa
 Summary:	aalib target for LibGII
 Summary(pl):	obs³uga aalib dla LibGII
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
 %description aa
-LibGGI target for displaying graphics using ascii-art-library
+LibGGI target for displaying graphics using ascii-art-library.
 
 %package svgalib
 Summary:	SVGALib target for LibGII
 Summary(pl):	obs³uga SVGALib dla LibGII
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
 %description svgalib
-LibGGI target for displaying via SVGALib
+LibGGI target for displaying via SVGALib.
 
 %package X11
 Summary:	X11 targets for LibGII
 Summary(pl):	Obs³uga X11 dla LibGII
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
 %description X11
 LibGGI targets for displaing in X:
-  x - graphics via X-protocol
-  xlib - graphics via X-library
-  dga - graphics via XFree86 DGA extension
+ - x - graphics via X-protocol
+ - xlib - graphics via X-library
+ - dga - graphics via XFree86 DGA extension
 
 #%package glide
 #Summary:	Glide (3DFX) target for LibGII
@@ -68,22 +70,24 @@ LibGGI targets for displaing in X:
 #Requires:	%{name} = %{version}
 #
 #%description glide
-#GGI Glide target
+#GGI Glide target.
 
 %package programs
 Summary:	Utilities and demos for GGI
 Summary(pl):	Programy narzêdziowe i przyk³adowe dla LibGGI
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description programs
-Various utilities and demos for GGI
+Various utilities and demos for GGI.
 
 %package devel
 Summary:	Development part of LibGII
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGII
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -108,7 +112,6 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/usr/src/examples/%{name}
 
 make install \
@@ -178,6 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 #%attr(755,root,root) %{_libdir}/ggi/display/glide.so
 
 %files programs
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man6/*
 
