@@ -55,7 +55,7 @@ sterowniki wy¶wietlania mog± byæ ³atwo u¿ywane.
 Summary:	aalib target for LibGGI
 Summary(pl):	Obs³uga aalib dla LibGGI
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description aa
 LibGGI target for displaying graphics using ascii-art-library.
@@ -67,7 +67,7 @@ Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 Summary:	SVGALib target for LibGGI
 Summary(pl):	Obs³uga SVGALib dla LibGGI
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description svgalib
 LibGGI target for displaying via SVGALib.
@@ -79,7 +79,7 @@ Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
 Summary:	X11 targets for LibGGI
 Summary(pl):	Obs³uga X11 dla LibGGI
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description X11
 LibGGI targets for displaing in X:
@@ -97,7 +97,7 @@ Modu³y LibGGI do obs³ugi grafiki w XWindow:
 Summary:	Glide (3DFX) target for LibGGI
 Summary(pl):	Obs³uga Glide (3DFX) dla LibGGI
 Group:		Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 
 %description glide
 GGI Glide target.
@@ -109,7 +109,7 @@ Modu³ do obs³ugi grafiki poprzez Glide.
 Summary:	Utilities and demos for GGI
 Summary(pl):	Programy narzêdziowe i przyk³adowe dla LibGGI
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Obsoletes:	libggi-demos
 
 %description programs
@@ -122,7 +122,7 @@ Ró¿ne programy oraz dema dla GGI
 Summary:	Development part of LibGGI
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Requires:	libgii-devel
 
 %description devel
