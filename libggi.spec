@@ -4,7 +4,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0.1
-Release:	5
+Release:	6
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
@@ -13,6 +13,7 @@ Patch0:		%{name}-time.patch
 Patch1:		%{name}-svga.patch
 Patch2:		%{name}-tm_to_mode.patch
 Patch3:		%{name}-ac25x.patch
+Patch4:		%{name}-nodirectfb.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -132,6 +133,7 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
