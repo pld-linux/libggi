@@ -151,8 +151,8 @@ CPPFLAGS="-I/usr/include/glide -I/usr/include/directfb -I/usr/include/directfb-i
 	%{?!_with_glide:--disable-glide} \
 	%{?!_with_kgicon:--disable-genkgi} \
 	--disable-directfb \
-	%{!?_without_svgalib:--disable-svgalib} \
-	%{!?_without_aalib:--disable-aa} \
+	%{?_without_svgalib:--disable-svga} \
+	%{?_without_aalib:--disable-aa} \
 %ifnarch %{ix86} alpha
 	--disable-svga \
 	--disable-vgagl \
