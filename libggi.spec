@@ -35,8 +35,8 @@ display types can be easily used by loading the appropriate "display
 target" (e.g. X, memory).
 
 %description -l pl
-LibGGI , dynamiczne GGI (General Graphic Interfejs - Generalny
-Interfejs Graficzny) jest bibliotek± obs³ugi grafiki
+LibGGI, dynamiczne GGI (General Graphics Interface - Generalny
+Interfejs Graficzny) jest bibliotek± obs³ugi grafiki.
 
 Dostarcza ona jednolity interfejs do akcelerowanych funkcji
 wy¶wietlania. Oryginalnie biblioteka zosta³a stworzona do
@@ -45,7 +45,7 @@ sterowniki wy¶wietlania mog± byæ ³atwo u¿ywane.
 
 %package aa
 Summary:	aalib target for LibGII
-Summary(pl):	obs³uga aalib dla LibGII
+Summary(pl):	Obs³uga aalib dla LibGII
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -57,11 +57,11 @@ Requires:	%{name} = %{version}
 LibGGI target for displaying graphics using ascii-art-library.
 
 %description -l pl aa
-Modu³ LibGGI do obs³ugi grafiki u¿ywaj±c biblioteki ascii-art.
+Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 
 %package svgalib
 Summary:	SVGALib target for LibGII
-Summary(pl):	obs³uga SVGALib dla LibGII
+Summary(pl):	Obs³uga SVGALib dla LibGII
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -182,7 +182,7 @@ gzip -9nf README ChangeLog NEWS doc/*.txt
 %postun -p /sbin/ldconfig
 
 %clean
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
