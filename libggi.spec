@@ -190,13 +190,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ggi/default/fbdev/*/*.la
 
 %{_mandir}/man3/*
-
-%changelog
-* Sun Jun 20 1999 Jacek Konieczny <jajcus@pld.org.pl>
-  [2.0b2.1]
-- package divided into target-specific subpackages
-- programs subpackage added 
-
-* Tue May 18 1999 Artur Frysiak <wiget@pld.org.pl>
-  [0.6-1]
-- first version (writed from templete.spec)  
