@@ -235,8 +235,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ggi/display
 %{_includedir}/ggi/internal/*.h
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
-%attr(755,root,root) %{_libdir}/ggi/*/*.la
-%attr(755,root,root) %{_libdir}/ggi/default/fbdev/*/*.la
+%{_libdir}/lib*.la
+%{_libdir}/ggi/*/*.la
+%{_libdir}/ggi/default/fbdev/*/*.la
 
 %{_mandir}/man3/*
