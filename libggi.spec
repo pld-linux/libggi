@@ -4,7 +4,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0.1
-Release:	3
+Release:	4
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
@@ -12,6 +12,7 @@ Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.gz
 Patch0:		%{name}-time.patch
 Patch1:		%{name}-svga.patch
 Patch2:		%{name}-tm_to_mode.patch
+Patch3:		%{name}-ac25x.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -57,7 +58,6 @@ LibGGI target for displaying graphics using ascii-art-library.
 %description aa -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 
-%ifarch %{ix86} alpha
 %package svgalib
 Summary:	SVGALib target for LibGGI
 Summary(pl):	Obs³uga SVGALib dla LibGGI
@@ -69,8 +69,6 @@ LibGGI target for displaying via SVGALib.
 
 %description svgalib -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
-
-%endif
 
 %package X11
 Summary:	X11 targets for LibGGI
@@ -133,6 +131,7 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
@@ -167,11 +166,11 @@ install programs/demos/.libs/stars $RPM_BUILD_ROOT%{_bindir}
 
 gzip -9nf README ChangeLog NEWS doc/*.txt
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
