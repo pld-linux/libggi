@@ -3,7 +3,7 @@ Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0b2.1
 Release:	1
-Group:		Library
+Group:		Libraries
 Group(pl):	Biblioteki
 Copyright:	GPL
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.bz2
@@ -30,7 +30,7 @@ loading the appropriate "display target" (e.g. X, memory).
 %package aa
 Summary:	aalib target for LibGII
 Summary(pl):	obs³uga aalib dla LibGII
-Group:		Library
+Group:		Libraries
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
@@ -40,7 +40,7 @@ LibGGI target for displaying graphics using ascii-art-library
 %package svgalib
 Summary:	SVGALib target for LibGII
 Summary(pl):	obs³uga SVGALib dla LibGII
-Group:		Library
+Group:		Libraries
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
@@ -50,7 +50,7 @@ LibGGI target for displaying via SVGALib
 %package X11
 Summary:	X11 targets for LibGII
 Summary(pl):	Obs³uga X11 dla LibGII
-Group:		Library
+Group:		Libraries
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
@@ -63,7 +63,7 @@ LibGGI targets for displaing in X:
 #%package glide
 #Summary:	Glide (3DFX) target for LibGII
 #Summary(pl):	Obs³uga Glide (3DFX) dla LibGII
-#Group:		Library
+#Group:		Libraries
 #Group(pl):	Biblioteki
 #Requires:	%{name} = %{version}
 
@@ -72,7 +72,7 @@ LibGGI targets for displaing in X:
 %package programs
 Summary:	Utilities and demos for GGI
 Summary(pl):	Programy narzêdziowe i przyk³adowe dla LibGGI
-Group:		Development/Library
+Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
@@ -82,7 +82,7 @@ Various utilities and demos for GGI
 %package devel
 Summary:	Development part of LibGII
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGII
-Group:		Development/Library
+Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
