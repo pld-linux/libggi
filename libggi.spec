@@ -13,7 +13,9 @@ URL:		http://www.ggi-project.org/
 BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	aalib-devel
+%ifarch %{ix86} alpha
 BuildRequires:	svgalib-devel
+%endif
 #BuildRequires:	glide-devel
 #BuildRequires:	kgicon-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -116,6 +118,9 @@ CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS
 	--disable-debug \
 	--disable-glide \
 	--disable-genkgi \
+%ifnarch %{ix86} alpha
+	--disable-svga \
+%endif
 	--sysconfdir=%{_sysconfdir}
 %{__make}
 
@@ -175,11 +180,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 
+%ifnarch %{ix86} alpha
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svgalib.so
 %attr(755,root,root) %{_libdir}/ggi/display/svgalib-misc.so
 %attr(755,root,root) %{_libdir}/ggi/display/vgagl.so
+%endif
 
 %files X11
 %defattr(644,root,root,755)
