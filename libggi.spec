@@ -14,7 +14,7 @@ BuildRequires:	aalib-devel
 BuildRequires:	svgalib-devel
 #BuildPrereq:   glide-devel
 BuildRequires:    kgicon-devel
-BuildRoot:   	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LibGGI, the dynamic GGI (General Graphics Interface) library is a flexible
