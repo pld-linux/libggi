@@ -2,7 +2,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0b2.1
-Release:	1
+Release:	2
 Group:		Libraries
 Group(pl):	Biblioteki
 Copyright:	GPL
@@ -12,8 +12,8 @@ BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	aalib-devel
 BuildRequires:	svgalib-devel
-#BuildPrereq:   glide-devel
-BuildRequires:    kgicon-devel
+#BuildRequires: glide-devel
+#BuildRequires:  kgicon-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -66,8 +66,9 @@ LibGGI targets for displaing in X:
 #Group:		Libraries
 #Group(pl):	Biblioteki
 #Requires:	%{name} = %{version}
-
+#
 #%description glide
+#GGI Glide target
 
 %package programs
 Summary:	Utilities and demos for GGI
@@ -97,9 +98,11 @@ Pliki potrzebne do programowania z wykorzystaniem LibGII.
 
 %build
 LDFLAGS="-s" ; export LDFLAGS
+CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS 
 %configure \
 	--disable-debug \
 	--disable-glide \
+	--disable-genkgi \
 	--sysconfdir=%{_sysconfdir}
 make
 
