@@ -1,14 +1,18 @@
+# bcond_on_glide - Build Glide support
+# bcond_on_kgicon - Build KGICon support
 Summary:	GGI - Generic Graphics Interface	
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
-Version:	2.0b2.1
-Release:	4
+Version:	2.0b3
+Release:	1
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-time.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
@@ -16,8 +20,8 @@ BuildRequires:	aalib-devel
 %ifarch %{ix86} alpha
 BuildRequires:	svgalib-devel
 %endif
-#BuildRequires:	glide-devel
-#BuildRequires:	kgicon-devel
+%{?bcond_on_glide:BuildRequires: glide-devel}
+%{?bcond_on_kgicon:BuildRequires: kgicon-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,11 +34,21 @@ interface with KGI, the GGI Kernel Graphics Interface, but other
 display types can be easily used by loading the appropriate "display
 target" (e.g. X, memory).
 
+%description -l pl
+LibGGI , dynamiczne GGI (General Graphic Interfejs - Generalny
+Interfejs Graficzny) jest bibliotek± obs³ugi grafiki
+
+Dostarcza ona jednolity interfejs do akcelerowanych funkcji
+wy¶wietlania. Oryginalnie biblioteka zosta³a stworzona do
+wspó³dzia³ania z KGI (GGI Kernel Graphic Interface) ale inne
+sterowniki wy¶wietlania mog± byæ ³atwo u¿ywane.
+
 %package aa
 Summary:	aalib target for LibGII
 Summary(pl):	obs³uga aalib dla LibGII
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -42,11 +56,15 @@ Requires:	%{name} = %{version}
 %description aa
 LibGGI target for displaying graphics using ascii-art-library.
 
+%description -l pl aa
+Modu³ LibGGI do obs³ugi grafiki u¿ywaj±c biblioteki ascii-art.
+
 %package svgalib
 Summary:	SVGALib target for LibGII
 Summary(pl):	obs³uga SVGALib dla LibGII
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -54,11 +72,15 @@ Requires:	%{name} = %{version}
 %description svgalib
 LibGGI target for displaying via SVGALib.
 
+%description -l pl svgalib
+Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
+
 %package X11
 Summary:	X11 targets for LibGII
 Summary(pl):	Obs³uga X11 dla LibGII
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -69,17 +91,27 @@ LibGGI targets for displaing in X:
  - xlib - graphics via X-library
  - dga - graphics via XFree86 DGA extension
 
+%description -l pl X11
+Modu³y LibGGI do obs³ugi grafiki w XWindow:
+ - x - grafika poprzez protokó³ X
+ - xlib - grafika poprzez bibliotekê xlib
+ - dga - grafika poprzez rozszerzenie X DGA
+
 %package glide
 Summary:	Glide (3DFX) target for LibGII
 Summary(pl):	Obs³uga Glide (3DFX) dla LibGII
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
 
 %description glide
 GGI Glide target.
+
+%description -l pl glide
+Modu³ do obs³ugi grafiki poprzez Glide.
 
 %package programs
 Summary:	Utilities and demos for GGI
@@ -93,6 +125,9 @@ Obsoletes:	libggi-demos
 
 %description programs
 Various utilities and demos for GGI.
+
+%description -l pl programs
+Ró¿ne programy oraz dema dla GGI
 
 %package devel
 Summary:	Development part of LibGII
@@ -111,18 +146,20 @@ Pliki potrzebne do programowania z wykorzystaniem LibGII.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
-CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS 
+CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS 
 %configure \
-	--disable-debug \
-	--disable-glide \
-	--disable-genkgi \
+	%{?!debug:--disable-debug} \
+	%{?!bcond_on_glide:--disable-glide} \
+	%{?!bcond_on_kgicon:--disable-genkgi} \
 %ifnarch %{ix86} alpha
 	--disable-svga \
 	--disable-vgagl \
 %endif
-	--sysconfdir=%{_sysconfdir}
+	--sysconfdir=%{_sysconfdir} \
+	--enable-threads
 %{__make}
 
 %install
@@ -145,7 +182,7 @@ gzip -9nf README ChangeLog NEWS doc/*.txt
 %postun -p /sbin/ldconfig
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
@@ -162,7 +199,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ggi/default/*.so
 %attr(755,root,root) %{_libdir}/ggi/display/fbdev.so
 %attr(755,root,root) %{_libdir}/ggi/display/file.so
-%attr(755,root,root) %{_libdir}/ggi/display/lin_vtsw.so
+%attr(755,root,root) %{_libdir}/ggi/display/linvtsw.so
 %attr(755,root,root) %{_libdir}/ggi/display/mansync.so
 %attr(755,root,root) %{_libdir}/ggi/display/memory.so
 %attr(755,root,root) %{_libdir}/ggi/display/monotext.so
@@ -184,8 +221,7 @@ rm -rf $RPM_BUILD_ROOT
 %ifnarch %{ix86} alpha
 %files svgalib
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/ggi/display/svgalib.so
-%attr(755,root,root) %{_libdir}/ggi/display/svgalib-misc.so
+%attr(755,root,root) %{_libdir}/ggi/display/svga*.so
 %attr(755,root,root) %{_libdir}/ggi/display/vgagl.so
 %endif
 
@@ -194,8 +230,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ggi/display/X*.so
 %attr(755,root,root) %{_libdir}/ggi/display/xf86dga.so
 
-#%files glide
-#%attr(755,root,root) %{_libdir}/ggi/display/glide.so
+%{?!bcond_on_glide:#}%files glide
+%{?!bcond_on_glide:#}%attr(755,root,root) %{_libdir}/ggi/display/glide.so
 
 %files programs
 %defattr(644,root,root,755)
