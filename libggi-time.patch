@@ -1,0 +1,11 @@
+diff -urN libggi-2.0b3.org/programs/check/speed.c libggi-2.0b3/programs/check/speed.c
+--- libggi-2.0b3.org/programs/check/speed.c	Sat Feb 24 10:53:19 2001
++++ libggi-2.0b3/programs/check/speed.c	Sat Feb 24 10:53:35 2001
+@@ -19,6 +19,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
++#include <time.h>
+ #include <sys/times.h>
+ 
+ #include <ggi/ggi.h>
