@@ -231,10 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog.gz
 %doc %{_examplesdir}/%{name}-%{version}
 
-%{_includedir}/*.h
-%{_includedir}/default
-%{_includedir}/display
-%{_includedir}/internal/*
+%{_includedir}/*
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/ggi/*/*.la
