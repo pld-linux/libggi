@@ -8,25 +8,24 @@
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
-Version:	2.0.7
-Release:	2
+Version:	2.1.0
+Release:	1
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
-Source0:	http://www.ggi-project.org/ftp/ggi/v2.0/%{name}-%{version}.src.tar.bz2
-# Source0-md5:	0645eab063e095f13dc1daadc6d85adb
-Patch0:		%{name}-amfix.patch
+Source0:	http://www.ggi-project.org/ftp/ggi/current/%{name}-%{version}.src.tar.bz2
+# Source0-md5:	08321e01148f7a3f96865e9939733d47
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_aalib:BuildRequires:	aalib-devel}
-BuildRequires:	libgii-devel >= 0.8.7
+%{?with_glide:BuildRequires:	glide-devel}
+%{?with_kgicon:BuildRequires:	kgicon-devel}
+BuildRequires:	libgii-devel >= 0.9.0
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %{?with_svga:BuildRequires:	svgalib-devel}
-%{?with_glide:BuildRequires:	glide-devel}
-%{?with_kgicon:BuildRequires:	kgicon-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -120,7 +119,7 @@ Summary:	Development part of LibGGI
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	libgii-devel >= 0.8.7
+Requires:	libgii-devel >= 0.9.0
 
 %description devel
 Development part of LibGGI.
@@ -130,7 +129,6 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 
 %prep
 %setup -q
-%patch0 -p1
 
 rm -f m4/{libtool,ltdl}.m4
 
@@ -191,6 +189,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/ggi/default/fbdev/*/*.so
 %attr(755,root,root) %{_libdir}/ggi/default/*.so
+%attr(755,root,root) %{_libdir}/ggi/display/auto.so
 %attr(755,root,root) %{_libdir}/ggi/display/fbdev.so
 %attr(755,root,root) %{_libdir}/ggi/display/file.so
 %attr(755,root,root) %{_libdir}/ggi/display/ipc.so
