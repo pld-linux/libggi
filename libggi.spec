@@ -2,11 +2,12 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0b2.1
-Release:	2
+Release:	3
+License:	GPL
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-License:	GPL
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.bz2
 URL:		http://www.ggi-project.org/
 BuildRequires:	libgii-devel
@@ -31,6 +32,7 @@ target" (e.g. X, memory).
 Summary:	aalib target for LibGII
 Summary(pl):	obs³uga aalib dla LibGII
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -42,6 +44,7 @@ LibGGI target for displaying graphics using ascii-art-library.
 Summary:	SVGALib target for LibGII
 Summary(pl):	obs³uga SVGALib dla LibGII
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -53,6 +56,7 @@ LibGGI target for displaying via SVGALib.
 Summary:	X11 targets for LibGII
 Summary(pl):	Obs³uga X11 dla LibGII
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Requires:	%{name} = %{version}
@@ -63,20 +67,23 @@ LibGGI targets for displaing in X:
  - xlib - graphics via X-library
  - dga - graphics via XFree86 DGA extension
 
-#%package glide
-#Summary:	Glide (3DFX) target for LibGII
-#Summary(pl):	Obs³uga Glide (3DFX) dla LibGII
-#Group:		Libraries
-#Group(pl):	Biblioteki
-#Requires:	%{name} = %{version}
+%package glide
+Summary:	Glide (3DFX) target for LibGII
+Summary(pl):	Obs³uga Glide (3DFX) dla LibGII
+Group:		Libraries
+Group(de):	Libraries
+Group(fr):	Librairies
+Group(pl):	Biblioteki
+Requires:	%{name} = %{version}
 
-#%description glide
-#GGI Glide target.
+%description glide
+GGI Glide target.
 
 %package programs
 Summary:	Utilities and demos for GGI
 Summary(pl):	Programy narzêdziowe i przyk³adowe dla LibGGI
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -89,6 +96,7 @@ Various utilities and demos for GGI.
 Summary:	Development part of LibGII
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGII
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -100,10 +108,9 @@ Development part of LibGII.
 Pliki potrzebne do programowania z wykorzystaniem LibGII.
 
 %prep
-%setup  -q
+%setup -q
 
 %build
-LDFLAGS="-s" ; export LDFLAGS
 CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS 
 %configure \
 	--disable-debug \
@@ -126,12 +133,7 @@ install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/slimy $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/stars $RPM_BUILD_ROOT%{_bindir}
 
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	README ChangeLog NEWS doc/*.txt
-
-%pre
-
-%preun
+gzip -9nf README ChangeLog NEWS doc/*.txt
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
