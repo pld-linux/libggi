@@ -11,6 +11,7 @@ Group:		Libraries
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.gz
 Patch0:		%{name}-time.patch
 Patch1:		%{name}-svga.patch
+Patch2:		%{name}-tm_to_mode.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
@@ -136,6 +137,7 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS
