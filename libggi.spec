@@ -109,7 +109,7 @@ CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS
 	--disable-glide \
 	--disable-genkgi \
 	--sysconfdir=%{_sysconfdir}
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
