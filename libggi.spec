@@ -9,7 +9,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0.7
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
@@ -194,6 +194,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ggi/display/fbdev.so
 %attr(755,root,root) %{_libdir}/ggi/display/file.so
 %attr(755,root,root) %{_libdir}/ggi/display/ipc.so
+%ifarch ppc
+%attr(755,root,root) %{_libdir}/ggi/display/lcd823.so
+%endif
 %attr(755,root,root) %{_libdir}/ggi/display/linvtsw.so
 %attr(755,root,root) %{_libdir}/ggi/display/mansync.so
 %attr(755,root,root) %{_libdir}/ggi/display/memory.so
