@@ -8,20 +8,20 @@
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
-Version:	2.0.6
+Version:	2.0.7
 Release:	1
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ggi-project.org/ftp/ggi/v2.0/%{name}-%{version}.src.tar.bz2
-# Source0-md5:	c4f82eb51d179d95b73f75a4e52c74a2
+# Source0-md5:	0645eab063e095f13dc1daadc6d85adb
 Patch0:		%{name}-amfix.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_aalib:BuildRequires:	aalib-devel}
-BuildRequires:	libgii-devel >= 0.8.5
+BuildRequires:	libgii-devel >= 0.8.7
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %{?with_svga:BuildRequires:	svgalib-devel}
@@ -120,7 +120,7 @@ Summary:	Development part of LibGGI
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	libgii-devel >= 0.8.5
+Requires:	libgii-devel >= 0.8.7
 
 %description devel
 Development part of LibGGI.
