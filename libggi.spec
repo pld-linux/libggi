@@ -2,7 +2,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0b2.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -121,12 +121,12 @@ CPPFLAGS="-I/usr/include/glide"; export CPPFLAGS
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR="$RPM_BUILD_ROOT"
 
-install programs/demos/*.c $RPM_BUILD_ROOT%{_prefix}/src/examples/%{name}
+install programs/demos/*.c $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 # demos which are nice, but not installed by make install
 install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
@@ -197,7 +197,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog.gz
-%doc %{_prefix}/src/examples/%{name}
+%doc %{_examplesdir}/%{name}-%{version}
 
 %{_includedir}/*
 %attr(755,root,root) %{_libdir}/lib*.so
