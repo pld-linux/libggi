@@ -1,14 +1,17 @@
 #
 # Conditional build:
-# _with_glide		- with Glide support
-# _with_kgicon		- with KGICon support
-# _without_aalib	- without aalib support
-# _without_svga		- without svgalib support
+%bcond_with	glide	# with Glide support
+%bcond_with	kgicon	# with KGICon support
+%bcond_without	aalib	# without aalib support
+%bcond_without	svga	# without svgalib support
 #
+%ifnarch %{ix86} alpha
+%undefine	with_svga
+%endif
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
-Version:	2.0.3
+Version:	2.0.4
 Release:	1
 Epoch:		1
 License:	BSD-like
@@ -16,20 +19,17 @@ Group:		Libraries
 Source0:	http://www.ggi-project.org/ftp/ggi/current/%{name}-%{version}.src.tar.bz2
 # Source0-md5:	89a723c041a123110cad167d37f1a192
 Patch0:		%{name}-amfix.patch
-Patch1:		%{name}-gcc33.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{!?_without_aalib:BuildRequires:	aalib-devel}
+%{?with_aalib:BuildRequires:	aalib-devel}
 BuildRequires:	libgii-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
-%ifarch %{ix86} alpha
-%{!?_without_svga:BuildRequires:	svgalib-devel}
-%endif
-%{?_with_glide:BuildRequires:	glide-devel}
-%{?_with_kgicon:BuildRequires:	kgicon-devel}
+%{?with_svga:BuildRequires:	svgalib-devel}
+%{?with_glide:BuildRequires:	glide-devel}
+%{?with_kgicon:BuildRequires:	kgicon-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -134,29 +134,23 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+
+rm -f m4/{libtool,ltdl}.m4
 
 %build
 %{__libtoolize}
-rm -f m4/libtool.m4
-head -114 acinclude.m4 | tail +71 > m4/gii.m4
-cat m4/*.m4 > acinclude.m4
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoheader}
 %{__autoconf}
 %{__automake}
 CPPFLAGS="-I/usr/include/glide -I/usr/include/directfb -I/usr/include/directfb-internal"
 %configure \
-	%{?!debug:--disable-debug} \
-	%{?!_with_glide:--disable-glide} \
-	%{?!_with_kgicon:--disable-genkgi} \
+	%{!?debug:--disable-debug} \
+	%{!?with_glide:--disable-glide} \
+	%{!?with_kgicon:--disable-genkgi} \
 	--disable-directfb \
-	%{?_without_svga:--disable-svga} \
-	%{?_without_aalib:--disable-aa} \
-%ifnarch %{ix86} alpha
-	--disable-svga \
-	--disable-vgagl \
-%endif
+	%{!?with_svga:--disable-svga --disable-vgagl} \
+	%{!?with_aalib:--disable-aa} \
 	--sysconfdir=%{_sysconfdir} \
 	--enable-threads
 %{__make}
@@ -177,6 +171,8 @@ install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/slimy $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/stars $RPM_BUILD_ROOT%{_bindir}
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/ggi/{default,default/fbdev/*,display,helper}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -191,12 +187,16 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/ggi/default/fbdev/*
 %dir %{_libdir}/ggi/display
 
-%{_sysconfdir}/ggi/*
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ggi/*.conf
+%dir %{_sysconfdir}/ggi/targets
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ggi/targets/*.conf
+
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/ggi/default/fbdev/*/*.so
 %attr(755,root,root) %{_libdir}/ggi/default/*.so
 %attr(755,root,root) %{_libdir}/ggi/display/fbdev.so
 %attr(755,root,root) %{_libdir}/ggi/display/file.so
+%attr(755,root,root) %{_libdir}/ggi/display/ipc.so
 %attr(755,root,root) %{_libdir}/ggi/display/linvtsw.so
 %attr(755,root,root) %{_libdir}/ggi/display/mansync.so
 %attr(755,root,root) %{_libdir}/ggi/display/memory.so
@@ -212,19 +212,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man7/*
 
-%if %{!?_without_aalib:1}0
+%if %{with aalib}
 %files aa
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 %endif
 
-%if %{!?_without_svga:1}0
-%ifarch %{ix86} alpha
+%if %{with svga}
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svga*.so
 %attr(755,root,root) %{_libdir}/ggi/display/vgagl.so
-%endif
 %endif
 
 %files X11
@@ -234,8 +232,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/ggi/helper
 %attr(755,root,root) %{_libdir}/ggi/helper/helper_x_*.so
 
-%{?!_with_glide:#}%files glide
-%{?!_with_glide:#}%attr(755,root,root) %{_libdir}/ggi/display/glide.so
+%if %{with glide}
+%files glide
+%attr(755,root,root) %{_libdir}/ggi/display/glide.so
+%endif
 
 %files programs
 %defattr(644,root,root,755)
