@@ -56,7 +56,6 @@ LibGGI target for displaying graphics using ascii-art-library.
 %description aa -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 
-%ifarch %{ix86}
 %package svgalib
 Summary:	SVGALib target for LibGGI
 Summary(pl):	Obs³uga SVGALib dla LibGGI
@@ -68,7 +67,6 @@ LibGGI target for displaying via SVGALib.
 
 %description svgalib -l pl
 Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
-%endif
 
 %package X11
 Summary:	X11 targets for LibGGI
@@ -118,6 +116,7 @@ Summary:	Development part of LibGGI
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	libgii-devel
 
 %description devel
 Development part of LibGGI.
@@ -228,7 +227,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog.gz
 %doc %{_examplesdir}/%{name}-%{version}
 
-%{_includedir}/*
+%{_includedir}/*.h
+%{_includedir}/default
+%{_includedir}/display
+%{_includedir}/internal/*
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %attr(755,root,root) %{_libdir}/ggi/*/*.la
