@@ -80,6 +80,7 @@ Group:		Development/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
+Obsoletes:	libggi-demos
 
 %description programs
 Various utilities and demos for GGI.
@@ -175,6 +176,8 @@ rm -rf $RPM_BUILD_ROOT
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svgalib.so
+%attr(755,root,root) %{_libdir}/ggi/display/svgalib-misc.so
+%attr(755,root,root) %{_libdir}/ggi/display/vgagl.so
 
 %files X11
 %defattr(644,root,root,755)
