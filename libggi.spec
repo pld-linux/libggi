@@ -19,7 +19,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	aalib-devel
 BuildRequires:	libgii-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %ifarch %{ix86} alpha
 BuildRequires:	svgalib-devel
