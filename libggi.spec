@@ -8,12 +8,12 @@ Group(pl):	Biblioteki
 Copyright:	GPL
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.bz2
 URL:		http://www.ggi-project.org/
-BuildPrereq:	libgii-devel
-BuildPrereq:	XFree86-devel
-BuildPrereq:	aalib-devel
-BuildPrereq:	svgalib-devel
+BuildRequires:	libgii-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	aalib-devel
+BuildRequires:	svgalib-devel
 #BuildPrereq:   glide-devel
-BuildPrereq:    kgicon-devel
+BuildRequires:    kgicon-devel
 BuildRoot:   	/tmp/%{name}-%{version}-root
 
 %description
