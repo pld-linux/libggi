@@ -8,13 +8,6 @@ Release:	1
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.tar.gz
 Patch0:		%{name}-time.patch
 Patch1:		%{name}-svga.patch
@@ -55,13 +48,6 @@ sterowniki wy╤wietlania mog╠ byФ Ёatwo u©ywane.
 Summary:	aalib target for LibGGI
 Summary(pl):	ObsЁuga aalib dla LibGGI
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description aa
@@ -75,13 +61,6 @@ ModuЁ LibGGI do obsЁugi grafiki poprzez bibliotekЙ ascii-art.
 Summary:	SVGALib target for LibGGI
 Summary(pl):	ObsЁuga SVGALib dla LibGGI
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description svgalib
@@ -95,13 +74,6 @@ ModuЁ LibGGI do obsЁugi grafiki poprzez bibliotekЙ SVGALib.
 Summary:	X11 targets for LibGGI
 Summary(pl):	ObsЁuga X11 dla LibGGI
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description X11
@@ -120,13 +92,6 @@ ModuЁy LibGGI do obsЁugi grafiki w XWindow:
 Summary:	Glide (3DFX) target for LibGGI
 Summary(pl):	ObsЁuga Glide (3DFX) dla LibGGI
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description glide
@@ -139,13 +104,6 @@ ModuЁ do obsЁugi grafiki poprzez Glide.
 Summary:	Utilities and demos for GGI
 Summary(pl):	Programy narzЙdziowe i przykЁadowe dla LibGGI
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Obsoletes:	libggi-demos
 
@@ -159,13 +117,6 @@ RС©ne programy oraz dema dla GGI
 Summary:	Development part of LibGGI
 Summary(pl):	CzЙ╤Ф dla programistСw biblioteki LibGGI
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description devel
