@@ -5,7 +5,7 @@ Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.0b4
 Release:	1
-License:	GPL
+License:	BSD-like
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -13,6 +13,7 @@ Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.src.tar.bz2
 Patch0:		%{name}-time.patch
+Patch1:		%{name}-svga.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	libgii-devel
 BuildRequires:	XFree86-devel
@@ -45,8 +46,8 @@ wspó³dzia³ania z KGI (GGI Kernel Graphic Interface) ale inne
 sterowniki wy¶wietlania mog± byæ ³atwo u¿ywane.
 
 %package aa
-Summary:	aalib target for LibGII
-Summary(pl):	Obs³uga aalib dla LibGII
+Summary:	aalib target for LibGGI
+Summary(pl):	Obs³uga aalib dla LibGGI
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -62,8 +63,8 @@ Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
 
 %ifarch %{ix86}
 %package svgalib
-Summary:	SVGALib target for LibGII
-Summary(pl):	Obs³uga SVGALib dla LibGII
+Summary:	SVGALib target for LibGGI
+Summary(pl):	Obs³uga SVGALib dla LibGGI
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -79,8 +80,8 @@ Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
 %endif
 
 %package X11
-Summary:	X11 targets for LibGII
-Summary(pl):	Obs³uga X11 dla LibGII
+Summary:	X11 targets for LibGGI
+Summary(pl):	Obs³uga X11 dla LibGGI
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -101,8 +102,8 @@ Modu³y LibGGI do obs³ugi grafiki w XWindow:
  - dga - grafika poprzez rozszerzenie X DGA
 
 %package glide
-Summary:	Glide (3DFX) target for LibGII
-Summary(pl):	Obs³uga Glide (3DFX) dla LibGII
+Summary:	Glide (3DFX) target for LibGGI
+Summary(pl):	Obs³uga Glide (3DFX) dla LibGGI
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
@@ -133,8 +134,8 @@ Various utilities and demos for GGI.
 Ró¿ne programy oraz dema dla GGI
 
 %package devel
-Summary:	Development part of LibGII
-Summary(pl):	Czê¶æ dla programistów biblioteki LibGII
+Summary:	Development part of LibGGI
+Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
@@ -142,14 +143,15 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
-Development part of LibGII.
+Development part of LibGGI.
 
 %description devel -l pl
-Pliki potrzebne do programowania z wykorzystaniem LibGII.
+Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+%patch1 -p1
 
 %build
 CPPFLAGS="-I%{_includedir}/glide"; export CPPFLAGS 
