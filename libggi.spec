@@ -24,7 +24,7 @@ BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_aalib:BuildRequires:	aalib-devel}
-BuildRequires:	libgii-devel >= 0.8
+BuildRequires:	libgii-devel >= 0.8.5
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %{?with_svga:BuildRequires:	svgalib-devel}
@@ -123,7 +123,7 @@ Summary:	Development part of LibGGI
 Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	libgii-devel >= 0.8
+Requires:	libgii-devel >= 0.8.5
 
 %description devel
 Development part of LibGGI.
