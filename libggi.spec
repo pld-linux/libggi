@@ -171,7 +171,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.gz NEWS.gz doc/*.txt*
-%dir %{_libdir}/ggi
 %dir %{_libdir}/ggi/default
 %dir %{_libdir}/ggi/default/fbdev
 %dir %{_libdir}/ggi/default/fbdev/*
