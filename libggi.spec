@@ -1,7 +1,9 @@
 #
 # Conditional build:
-# _with_glide	- with Glide support
-# _with_kgicon	- with KGICon support
+# _with_glide	    - with Glide support
+# _with_kgicon	    - with KGICon support
+# _without_aalib    - without aalib support
+# _without_svgalib  - without svgalib support
 #
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
@@ -13,16 +15,17 @@ License:	BSD-like
 Group:		Libraries
 Source0:	ftp://ftp.ggi-project.org/pub/ggi/ggi/current/%{name}-%{version}.src.tar.bz2
 Patch0:		%{name}-amfix.patch
+Patch1:		%{name}-gcc33.patch
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	aalib-devel
+%{!?_without_aalib:BuildRequires:	aalib-devel}
 BuildRequires:	libgii-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %ifarch %{ix86} alpha
-BuildRequires:	svgalib-devel
+%{!?_without_svgalib:BuildRequires:	svgalib-devel}
 %endif
 %{?_with_glide:BuildRequires: glide-devel}
 %{?_with_kgicon:BuildRequires: kgicon-devel}
@@ -129,7 +132,8 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -146,6 +150,8 @@ CPPFLAGS="-I/usr/include/glide -I/usr/include/directfb -I/usr/include/directfb-i
 	%{?!_with_glide:--disable-glide} \
 	%{?!_with_kgicon:--disable-genkgi} \
 	--disable-directfb \
+	%{!?_without_svgalib:--disable-svgalib} \
+	%{!?_without_aalib:--disable-aa} \
 %ifnarch %{ix86} alpha
 	--disable-svga \
 	--disable-vgagl \
@@ -205,15 +211,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man7/*
 
+%if %{!?_without_aalib:1}0
 %files aa
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
+%endif
 
+%if %{!?_without_svgalib:1}0
 %ifarch %{ix86} alpha
 %files svgalib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/svga*.so
 %attr(755,root,root) %{_libdir}/ggi/display/vgagl.so
+%endif
 %endif
 
 %files X11
