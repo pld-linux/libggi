@@ -1,9 +1,9 @@
 #
 # Conditional build:
-# _with_glide	    - with Glide support
-# _with_kgicon	    - with KGICon support
-# _without_aalib    - without aalib support
-# _without_svgalib  - without svgalib support
+# _with_glide		- with Glide support
+# _with_kgicon		- with KGICon support
+# _without_aalib	- without aalib support
+# _without_svga		- without svgalib support
 #
 Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
@@ -26,7 +26,7 @@ BuildRequires:	libgii-devel
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %ifarch %{ix86} alpha
-%{!?_without_svgalib:BuildRequires:	svgalib-devel}
+%{!?_without_svga:BuildRequires:	svgalib-devel}
 %endif
 %{?_with_glide:BuildRequires:	glide-devel}
 %{?_with_kgicon:BuildRequires:	kgicon-devel}
@@ -151,7 +151,7 @@ CPPFLAGS="-I/usr/include/glide -I/usr/include/directfb -I/usr/include/directfb-i
 	%{?!_with_glide:--disable-glide} \
 	%{?!_with_kgicon:--disable-genkgi} \
 	--disable-directfb \
-	%{?_without_svgalib:--disable-svga} \
+	%{?_without_svga:--disable-svga} \
 	%{?_without_aalib:--disable-aa} \
 %ifnarch %{ix86} alpha
 	--disable-svga \
@@ -218,7 +218,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/ggi/display/aa.so
 %endif
 
-%if %{!?_without_svgalib:1}0
+%if %{!?_without_svga:1}0
 %ifarch %{ix86} alpha
 %files svgalib
 %defattr(644,root,root,755)
