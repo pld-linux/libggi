@@ -17,9 +17,9 @@ Source0:	http://www.ggi-project.org/ftp/ggi/v2.1/%{name}-%{version}.src.tar.bz2
 # Source0-md5:	f29e844011425ab14706e31a4cdee181
 URL:		http://www.ggi-project.org/
 BuildRequires:	XFree86-devel
+%{?with_aalib:BuildRequires:	aalib-devel}
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{?with_aalib:BuildRequires:	aalib-devel}
 %{?with_glide:BuildRequires:	glide-devel}
 %{?with_kgicon:BuildRequires:	kgicon-devel}
 BuildRequires:	libgii-devel >= 0.9.2
@@ -182,9 +182,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/ggi/default/fbdev/*
 %dir %{_libdir}/ggi/display
 
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ggi/*.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ggi/*.conf
 %dir %{_sysconfdir}/ggi/targets
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/ggi/targets/*.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ggi/targets/*.conf
 
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/ggi/default/fbdev/*/*.so
