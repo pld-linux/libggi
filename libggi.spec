@@ -9,23 +9,29 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.1.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
 Source0:	http://www.ggi-project.org/ftp/ggi/v2.1/%{name}-%{version}.src.tar.bz2
 # Source0-md5:	f29e844011425ab14706e31a4cdee181
+Patch0:		%{name}-ppc.patch
+Patch1:		%{name}-gcc4.1.patch
+Patch2:		%{name}-gcc4.patch
+Patch3:		%{name}-glibc24.patch
 URL:		http://www.ggi-project.org/
-BuildRequires:	XFree86-devel
 %{?with_aalib:BuildRequires:	aalib-devel}
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_glide:BuildRequires:	glide-devel}
-%{?with_kgicon:BuildRequires:	kgicon-devel}
 BuildRequires:	libgii-devel >= 0.9.2
 BuildRequires:	libtool >= 1:1.4.2-9
 BuildRequires:	ncurses-devel
 %{?with_svga:BuildRequires:	svgalib-devel}
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXxf86dga-devel
+BuildRequires:	xorg-lib-libXxf86vm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -129,6 +135,10 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p0
+%patch3 -p1
 
 rm -f m4/{libtool,ltdl}.m4
 
