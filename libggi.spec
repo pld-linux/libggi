@@ -6,7 +6,7 @@
 %bcond_without	svga	# without svgalib support
 #
 Summary:	GGI - Generic Graphics Interface
-Summary(pl):	GGI - Generic Graphics Interface
+Summary(pl.UTF-8):   GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.1.2
 Release:	2
@@ -44,42 +44,42 @@ interface with KGI, the GGI Kernel Graphics Interface, but other
 display types can be easily used by loading the appropriate "display
 target" (e.g. X, memory).
 
-%description -l pl
+%description -l pl.UTF-8
 LibGGI, dynamiczne GGI (General Graphics Interface - Generalny
-Interfejs Graficzny) jest bibliotek± obs³ugi grafiki.
+Interfejs Graficzny) jest bibliotekÄ… obsÅ‚ugi grafiki.
 
 Dostarcza ona jednolity interfejs do akcelerowanych funkcji
-wy¶wietlania. Oryginalnie biblioteka zosta³a stworzona do
-wspó³dzia³ania z KGI (GGI Kernel Graphic Interface) ale inne
-sterowniki wy¶wietlania mog± byæ ³atwo u¿ywane.
+wyÅ›wietlania. Oryginalnie biblioteka zostaÅ‚a stworzona do
+wspÃ³Å‚dziaÅ‚ania z KGI (GGI Kernel Graphic Interface) ale inne
+sterowniki wyÅ›wietlania mogÄ… byÄ‡ Å‚atwo uÅ¼ywane.
 
 %package aa
 Summary:	aalib target for LibGGI
-Summary(pl):	Obs³uga aalib dla LibGGI
+Summary(pl.UTF-8):   ObsÅ‚uga aalib dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description aa
 LibGGI target for displaying graphics using ascii-art-library.
 
-%description aa -l pl
-Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê ascii-art.
+%description aa -l pl.UTF-8
+ModuÅ‚ LibGGI do obsÅ‚ugi grafiki poprzez bibliotekÄ™ ascii-art.
 
 %package svgalib
 Summary:	SVGALib target for LibGGI
-Summary(pl):	Obs³uga SVGALib dla LibGGI
+Summary(pl.UTF-8):   ObsÅ‚uga SVGALib dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description svgalib
 LibGGI target for displaying via SVGALib.
 
-%description svgalib -l pl
-Modu³ LibGGI do obs³ugi grafiki poprzez bibliotekê SVGALib.
+%description svgalib -l pl.UTF-8
+ModuÅ‚ LibGGI do obsÅ‚ugi grafiki poprzez bibliotekÄ™ SVGALib.
 
 %package X11
 Summary:	X11 targets for LibGGI
-Summary(pl):	Obs³uga X11 dla LibGGI
+Summary(pl.UTF-8):   ObsÅ‚uga X11 dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -89,27 +89,27 @@ LibGGI targets for displaing in X:
  - xlib - graphics via X-library
  - dga - graphics via XFree86 DGA extension
 
-%description X11 -l pl
-Modu³y LibGGI do obs³ugi grafiki w XWindow:
- - x - grafika poprzez protokó³ X
- - xlib - grafika poprzez bibliotekê xlib
+%description X11 -l pl.UTF-8
+ModuÅ‚y LibGGI do obsÅ‚ugi grafiki w XWindow:
+ - x - grafika poprzez protokÃ³Å‚ X
+ - xlib - grafika poprzez bibliotekÄ™ xlib
  - dga - grafika poprzez rozszerzenie X DGA
 
 %package glide
 Summary:	Glide (3DFX) target for LibGGI
-Summary(pl):	Obs³uga Glide (3DFX) dla LibGGI
+Summary(pl.UTF-8):   ObsÅ‚uga Glide (3DFX) dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description glide
 GGI Glide target.
 
-%description glide -l pl
-Modu³ do obs³ugi grafiki poprzez Glide.
+%description glide -l pl.UTF-8
+ModuÅ‚ do obsÅ‚ugi grafiki poprzez Glide.
 
 %package programs
 Summary:	Utilities and demos for GGI
-Summary(pl):	Programy narzêdziowe i przyk³adowe dla LibGGI
+Summary(pl.UTF-8):   Programy narzÄ™dziowe i przykÅ‚adowe dla LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	libggi-demos
@@ -117,12 +117,12 @@ Obsoletes:	libggi-demos
 %description programs
 Various utilities and demos for GGI.
 
-%description programs -l pl
-Ró¿ne programy oraz dema dla GGI
+%description programs -l pl.UTF-8
+RÃ³Å¼ne programy oraz dema dla GGI
 
 %package devel
 Summary:	Development part of LibGGI
-Summary(pl):	Czê¶æ dla programistów biblioteki LibGGI
+Summary(pl.UTF-8):   CzÄ™Å›Ä‡ dla programistÃ³w biblioteki LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	libgii-devel >= 0.9.2
@@ -130,7 +130,7 @@ Requires:	libgii-devel >= 0.9.2
 %description devel
 Development part of LibGGI.
 
-%description devel -l pl
+%description devel -l pl.UTF-8
 Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 
 %prep
