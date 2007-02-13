@@ -6,7 +6,7 @@
 %bcond_without	svga	# without svgalib support
 #
 Summary:	GGI - Generic Graphics Interface
-Summary(pl.UTF-8):   GGI - Generic Graphics Interface
+Summary(pl.UTF-8):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.1.2
 Release:	2
@@ -55,7 +55,7 @@ sterowniki wyświetlania mogą być łatwo używane.
 
 %package aa
 Summary:	aalib target for LibGGI
-Summary(pl.UTF-8):   Obsługa aalib dla LibGGI
+Summary(pl.UTF-8):	Obsługa aalib dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -67,7 +67,7 @@ Moduł LibGGI do obsługi grafiki poprzez bibliotekę ascii-art.
 
 %package svgalib
 Summary:	SVGALib target for LibGGI
-Summary(pl.UTF-8):   Obsługa SVGALib dla LibGGI
+Summary(pl.UTF-8):	Obsługa SVGALib dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -79,7 +79,7 @@ Moduł LibGGI do obsługi grafiki poprzez bibliotekę SVGALib.
 
 %package X11
 Summary:	X11 targets for LibGGI
-Summary(pl.UTF-8):   Obsługa X11 dla LibGGI
+Summary(pl.UTF-8):	Obsługa X11 dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -97,7 +97,7 @@ Moduły LibGGI do obsługi grafiki w XWindow:
 
 %package glide
 Summary:	Glide (3DFX) target for LibGGI
-Summary(pl.UTF-8):   Obsługa Glide (3DFX) dla LibGGI
+Summary(pl.UTF-8):	Obsługa Glide (3DFX) dla LibGGI
 Group:		Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 
@@ -109,7 +109,7 @@ Moduł do obsługi grafiki poprzez Glide.
 
 %package programs
 Summary:	Utilities and demos for GGI
-Summary(pl.UTF-8):   Programy narzędziowe i przykładowe dla LibGGI
+Summary(pl.UTF-8):	Programy narzędziowe i przykładowe dla LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Obsoletes:	libggi-demos
@@ -122,7 +122,7 @@ Różne programy oraz dema dla GGI
 
 %package devel
 Summary:	Development part of LibGGI
-Summary(pl.UTF-8):   Część dla programistów biblioteki LibGGI
+Summary(pl.UTF-8):	Część dla programistów biblioteki LibGGI
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	libgii-devel >= 0.9.2
