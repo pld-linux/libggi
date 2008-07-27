@@ -9,7 +9,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl.UTF-8):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.1.2
-Release:	2
+Release:	3
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
