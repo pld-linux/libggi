@@ -192,6 +192,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/ggi/default/fbdev/*
 %dir %{_libdir}/ggi/display
 
+%dir %{_sysconfdir}/ggi
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ggi/*.conf
 %dir %{_sysconfdir}/ggi/targets
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ggi/targets/*.conf
