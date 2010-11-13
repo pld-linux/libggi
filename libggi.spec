@@ -3,13 +3,13 @@
 %bcond_with	glide	# with Glide support
 %bcond_with	kgicon	# with KGICon support
 %bcond_without	aalib	# without aalib support
-%bcond_without	svga	# without svgalib support
+%bcond_with	svga	# without svgalib support
 #
 Summary:	GGI - Generic Graphics Interface
 Summary(pl.UTF-8):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.1.2
-Release:	3
+Release:	4
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
