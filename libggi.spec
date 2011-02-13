@@ -19,6 +19,7 @@ Patch0:		%{name}-ppc.patch
 Patch1:		%{name}-gcc4.1.patch
 Patch2:		%{name}-gcc4.patch
 Patch3:		%{name}-glibc24.patch
+Patch4:		ac.patch
 URL:		http://www.ggi-project.org/
 %{?with_aalib:BuildRequires:	aalib-devel}
 BuildRequires:	autoconf
@@ -136,11 +137,13 @@ Pliki potrzebne do programowania z wykorzystaniem LibGGI.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p0
+#patch1 -p1
+#patch2 -p0
 %patch3 -p1
+%patch4 -p1
 
 rm -f m4/{libtool,ltdl}.m4
+rm acinclude.m4
 
 %build
 %{__libtoolize}

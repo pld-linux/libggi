@@ -1,0 +1,12 @@
+- ./libtool is unusable before finishing ./configure
+--- libggi-2.2.2/acinclude.m4.orig	2009-10-28 21:27:00.900744957 +0100
++++ libggi-2.2.2/acinclude.m4	2009-10-28 21:27:28.398855073 +0100
+@@ -329,7 +329,7 @@
+ AC_DEFUN([GGI_CHECK_LIB],
+ [
+    save_CC="$CC"
+-   CC="$SHELL ./libtool --mode=link $CC"
++   CC="$SHELL /usr/bin/libtool --mode=link $CC"
+    AC_CHECK_LIB($1, $2, [
+      CC="$save_CC"
+      $3], [
