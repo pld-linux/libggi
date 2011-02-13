@@ -181,7 +181,7 @@ install programs/demos/.libs/flying_ggis $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/slimy $RPM_BUILD_ROOT%{_bindir}
 install programs/demos/.libs/stars $RPM_BUILD_ROOT%{_bindir}
 
-rm -f $RPM_BUILD_ROOT%{_libdir}/ggi/{default,default/fbdev/*,display,helper}/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/ggi/{default,default/fbdev,display,helper}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -201,9 +201,28 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_sysconfdir}/ggi/targets
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ggi/targets/*.conf
 
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/ggi/default/fbdev/*.so
-%attr(755,root,root) %{_libdir}/ggi/default/*.so
+%attr(755,root,root) %{_libdir}/libggi.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libggi.so.2
+%attr(755,root,root) %{_libdir}/ggi/default/fbdev/fbdev_m2164w.so
+%attr(755,root,root) %{_libdir}/ggi/default/fbdev/fbdev_mach64.so
+%attr(755,root,root) %{_libdir}/ggi/default/fbdev/fbdev_mga_g400.so
+%attr(755,root,root) %{_libdir}/ggi/default/color.so
+%attr(755,root,root) %{_libdir}/ggi/default/ilbm.so
+%attr(755,root,root) %{_libdir}/ggi/default/iplanar_2p.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_1.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_16.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_1_r.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_2.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_24.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_32.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_4.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_4_r.so
+%attr(755,root,root) %{_libdir}/ggi/default/linear_8.so
+%attr(755,root,root) %{_libdir}/ggi/default/planar.so
+%attr(755,root,root) %{_libdir}/ggi/default/pseudo_stubs.so
+%attr(755,root,root) %{_libdir}/ggi/default/stubs.so
+%attr(755,root,root) %{_libdir}/ggi/default/text_16.so
+%attr(755,root,root) %{_libdir}/ggi/default/text_32.so
 %attr(755,root,root) %{_libdir}/ggi/display/auto.so
 %attr(755,root,root) %{_libdir}/ggi/display/fbdev.so
 %attr(755,root,root) %{_libdir}/ggi/display/file.so
@@ -241,9 +260,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files X11
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/ggi/display/X*.so
+%attr(755,root,root) %{_libdir}/ggi/display/X.so
 %dir %{_libdir}/ggi/helper
-%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_*.so
+%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_dbe.so
+%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_dga.so
+%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_evi.so
+%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_shm.so
+%attr(755,root,root) %{_libdir}/ggi/helper/helper_x_vidmode.so
 
 %if %{with glide}
 %files glide
@@ -253,8 +276,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files programs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/cube3d
+%attr(755,root,root) %{_bindir}/flying_ggis
+%attr(755,root,root) %{_bindir}/ggiteleserver
+%attr(755,root,root) %{_bindir}/monitest
+%attr(755,root,root) %{_bindir}/slimy
+%attr(755,root,root) %{_bindir}/stars
+%{_mandir}/man1/cube3d.1*
+%{_mandir}/man1/demo.1*
+%{_mandir}/man1/ggi-demo.1*
+%{_mandir}/man1/ggiteleserver.1*
+%{_mandir}/man1/monitest.1*
 
 %files devel
 %defattr(644,root,root,755)
@@ -262,7 +294,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ggi/*.h
 %{_includedir}/ggi/display
 %{_includedir}/ggi/internal/*.h
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libggi.so
+%{_libdir}/libggi.la
 %{_mandir}/man3/*
 %{_examplesdir}/%{name}-%{version}
