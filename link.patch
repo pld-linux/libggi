@@ -1,0 +1,11 @@
+--- libggi-2.2.2/configure.in.orig	2011-02-12 18:18:41.840688562 +0100
++++ libggi-2.2.2/configure.in	2011-02-12 18:19:01.216520187 +0100
+@@ -858,7 +858,7 @@ if test "x$build_terminfo_target" != "xn
+ 	build_terminfo_target="no"])])])
+   if test -n "$curseslib"; then
+     AC_CHECK_LIB($curseslib, set_term,
+-	terminfolibs="-l$curseslib",
++	terminfolibs="-l$curseslib -ltinfo",
+ 	build_terminfo_target=no)
+   fi
+   AC_CHECK_LIB($curseslib, mvwaddchnstr,
