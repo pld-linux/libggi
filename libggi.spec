@@ -194,7 +194,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README NEWS doc/*.txt
 %dir %{_libdir}/ggi/default
 %dir %{_libdir}/ggi/default/fbdev
-%dir %{_libdir}/ggi/default/fbdev/*
 %dir %{_libdir}/ggi/display
 
 %dir %{_sysconfdir}/ggi
@@ -203,7 +202,7 @@ rm -rf $RPM_BUILD_ROOT
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ggi/targets/*.conf
 
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/ggi/default/fbdev/*/*.so
+%attr(755,root,root) %{_libdir}/ggi/default/fbdev/*.so
 %attr(755,root,root) %{_libdir}/ggi/default/*.so
 %attr(755,root,root) %{_libdir}/ggi/display/auto.so
 %attr(755,root,root) %{_libdir}/ggi/display/fbdev.so
@@ -243,7 +242,6 @@ rm -rf $RPM_BUILD_ROOT
 %files X11
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/ggi/display/X*.so
-%attr(755,root,root) %{_libdir}/ggi/display/xf86dga.so
 %dir %{_libdir}/ggi/helper
 %attr(755,root,root) %{_libdir}/ggi/helper/helper_x_*.so
 
