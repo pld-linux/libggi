@@ -10,3 +10,17 @@
     AC_CHECK_LIB($1, $2, [
       CC="$save_CC"
       $3], [
+--- libggi-2.2.2/m4/gii_paths.m4~	2005-09-21 16:38:45.000000000 +0200
++++ libggi-2.2.2/m4/gii_paths.m4	2011-07-25 12:56:39.019829879 +0200
+@@ -7,11 +7,9 @@
+ [  --with-gii=DIR          use the LibGII installed DIR],
+ CFLAGS="$CFLAGS -I$withval/include"
+   CPPFLAGS="$CPPFLAGS -I$withval/include"
+-  LDFLAGS="$LDFLAGS -L$withval/lib"
+   DISTCHECK_CONFIGURE_FLAGS="$DISTCHECK_CONFIGURE_FLAGS --with-gii=$withval",
+ CFLAGS="$CFLAGS -I$prefix/include"
+   CPPFLAGS="$CPPFLAGS -I$prefix/include"
+-  LDFLAGS="$LDFLAGS -L$prefix/lib"
+   DISTCHECK_CONFIGURE_FLAGS="$DISTCHECK_CONFIGURE_FLAGS --with-gii=$prefix")
+ 
+ ])
