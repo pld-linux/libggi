@@ -1,0 +1,43 @@
+--- libggi-2.2.2/display/glide/mode.c.orig	2005-09-19 20:46:42.000000000 +0200
++++ libggi-2.2.2/display/glide/mode.c	2012-01-15 16:25:19.400372178 +0100
+@@ -33,6 +33,7 @@
+ 
+ #include "config.h"
+ #include <ggi/internal/ggi-dl.h>
++#include <ggi/internal/ggi_debug.h>
+ #include <ggi/display/glide.h>
+ #include "../../default/color/color.h"
+ 
+@@ -547,9 +548,9 @@ int GGI_glide_checkmode(ggi_visual *vis,
+ 	APP_ASSERT(vis != NULL, "glide: Visual NULL in GGIcheckmode");
+ 
+ 	/* handle AUTO */
+-	_GGIhandle_ggiauto(mode, 640, 480);
++	_GGIhandle_ggiauto(tm, 640, 480);
+ 
+-	mode->graphtype = _GGIhandle_gtauto(mode->graphtype);
++	tm->graphtype = _GGIhandle_gtauto(tm->graphtype);
+ 
+ 	if (tm->frames == GGI_AUTO) {
+ 		tm->frames = 1;
+--- libggi-2.2.2/display/glide/visual.c.orig	2005-09-19 20:46:42.000000000 +0200
++++ libggi-2.2.2/display/glide/visual.c	2012-01-15 16:28:15.690378084 +0100
+@@ -32,7 +32,9 @@
+ #include "config.h"
+ #include <ggi/display/glide.h>
+ #include <ggi/display/linvtsw.h>
++#include <ggi/display/monotext.h>
+ #include <ggi/internal/gg_replace.h>
++#include <ggi/internal/ggi_debug.h>
+ 
+ 
+ void _GGI_glide_freedbs(ggi_visual *vis)
+@@ -219,7 +221,7 @@ static int GGIopen(ggi_visual *vis, stru
+ 		= priv->hwconf.SSTs[currentcard].sstBoard.VoodooConfig.fbRam
+ 		* 1024 * 1024;
+ 	priv->setmodesuccess = 0;
+-	MONOTEXT_PRIV(vis) = priv;
++	LIBGGI_PRIVATE(vis) = priv;
+ 
+ 	/* Has mode management */
+ 	vis->opdisplay->flush = GGI_glide_flush;

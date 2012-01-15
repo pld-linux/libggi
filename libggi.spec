@@ -21,12 +21,13 @@ Patch0:		%{name}-ppc.patch
 Patch1:		ac.patch
 Patch2:		link.patch
 Patch3:		%{name}-directfb.patch
+Patch4:		%{name}-glide.patch
 URL:		http://www.ggi-project.org/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 1.4.15}
+%{?with_glide:BuildRequires:	Glide2x-devel}
 %{?with_aalib:BuildRequires:	aalib-devel}
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-%{?with_glide:BuildRequires:	glide-devel}
 BuildRequires:	libgii-devel >= 1.0.2
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	ncurses-devel
@@ -177,6 +178,7 @@ Statyczna biblioteka libggi.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__rm} acinclude.m4 m4/{libtool,lt*}.m4
 
@@ -186,7 +188,7 @@ Statyczna biblioteka libggi.
 %{__autoheader}
 %{__autoconf}
 %{__automake}
-CPPFLAGS="%{rpmcppflags} %{?with_glibde:-I/usr/include/glide} %{?with_directfb:-I/usr/include/directfb -I/usr/include/directfb-internal}"
+CPPFLAGS="%{rpmcppflags} %{?with_glide:-I/usr/include/glide} %{?with_directfb:-I/usr/include/directfb -I/usr/include/directfb-internal}"
 %configure \
 	%{!?with_aalib:--disable-aa} \
 	%{!?debug:--disable-debug} \
