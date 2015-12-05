@@ -11,7 +11,7 @@ Summary:	GGI - Generic Graphics Interface
 Summary(pl.UTF-8):	GGI - Generic Graphics Interface
 Name:		libggi
 Version:	2.2.2
-Release:	7
+Release:	8
 Epoch:		1
 License:	BSD-like
 Group:		Libraries
@@ -22,6 +22,7 @@ Patch1:		ac.patch
 Patch2:		link.patch
 Patch3:		%{name}-directfb.patch
 Patch4:		%{name}-glide.patch
+Patch5:		%{name}-security.patch
 URL:		http://www.ggi-project.org/
 %{?with_directfb:BuildRequires:	DirectFB-devel >= 1.4.15}
 %{?with_glide:BuildRequires:	Glide2x-devel}
@@ -179,6 +180,7 @@ Statyczna biblioteka libggi.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %{__rm} acinclude.m4 m4/{libtool,lt*}.m4
 

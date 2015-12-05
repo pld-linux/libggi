@@ -1,0 +1,20 @@
+--- libggi-2.2.2/display/linvtsw/visual.c~	2005-07-30 13:38:51.000000000 +0200
++++ libggi-2.2.2/display/linvtsw/visual.c	2015-12-05 22:41:47.692439694 +0100
+@@ -316,7 +316,7 @@ vtswitch_open(ggi_visual *vis)
+ 		close(fd);
+ 		fd = open("/dev/console", O_WRONLY);
+ 		if (fd < 0) {
+-			fprintf(stderr, nopermstring);
++			fprintf(stderr, "%s", nopermstring);
+ 			return GGI_ENODEVICE;
+ 		}
+ 		if ((vthandling.vtnum = get_newcons(fd)) < 0) {
+@@ -394,7 +394,7 @@ vtswitch_open(ggi_visual *vis)
+ 	origvtnum = vt_state.v_active;
+         if (vthandling.vtnum != vt_state.v_active) {
+ 		if (ioctl(vtfd, VT_ACTIVATE, vthandling.vtnum)) {
+-			fprintf(stderr, nopermstring);
++			fprintf(stderr, "%s", nopermstring);
+ 			close(vtfd);
+ 			vtfd = -1;
+ 			return GGI_ENODEVICE;
