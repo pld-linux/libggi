@@ -18,3 +18,14 @@
  			close(vtfd);
  			vtfd = -1;
  			return GGI_ENODEVICE;
+--- libggi-2.2.2/ggi/mode.c~	2005-08-15 20:50:58.000000000 +0200
++++ libggi-2.2.2/ggi/mode.c	2015-12-05 22:57:17.711496786 +0100
+@@ -389,7 +389,7 @@ int ggiFPrintMode(FILE *s, const ggi_mod
+ 
+ 	ggiSPrintMode(buf, m);
+ 
+-	return fprintf(s, buf);
++	return fprintf(s, "%s", buf);
+ }
+ 
+ 
