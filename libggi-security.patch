@@ -40,3 +40,23 @@
  	printf("Used before   : %6ld, after: %6ld,  Change: %6ld\n",
  		   prev, now, now-prev);
  	printf("Alloced before: %6ld, after: %6ld,  Change: %6ld\n",
+--- libggi-2.2.2/programs/check/findleaks.c~	2015-12-05 23:00:05.000000000 +0100
++++ libggi-2.2.2/programs/check/findleaks.c	2015-12-05 23:07:01.769059940 +0100
+@@ -38,7 +38,7 @@ static void wait4key(void)
+ static void err(const char *s,...)
+ {
+ 	printf("Fatal error: ");
+-	printf(s);
++	printf("%s", s);
+ 	exit(1);
+ }
+ 
+@@ -96,7 +96,7 @@ static long get_size(void)
+ 
+ static void inform_mem(const char *info, long prev, long now, long allocprev, long allocnow)
+ {
+-	printf(info);
++	printf("%s", info);
+ 	fprintf(stderr, "inform_mem(): not implemented for your platform\n");
+ 	printf("Check memory stats now, then press any key\n");
+ 	fflush(stdout);
